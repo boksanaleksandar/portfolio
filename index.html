@@ -129,10 +129,9 @@
     }
     .hero-photo-frame img {
       width: 100%; height: 520px;
-      object-fit: contain; object-position: center center;
+      object-fit: cover; object-position: center 20%;
       display: block;
       transition: transform .5s ease;
-      background: var(--surface2);
     }
     .hero-photo-frame:hover img { transform: scale(1.03); }
     .hero-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.18) 0%, transparent 50%); }
@@ -450,7 +449,7 @@
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-frame">
-        <img src="images/hero.jpg" alt="Aleksandar Boksan — Product Designer" style="object-position: center bottom;" />
+        <img src="images/hero.jpg" alt="Aleksandar Boksan — Product Designer" />
         <div class="hero-photo-overlay"></div>
         <div class="hero-photo-tag">
           <span>🎨</span>
