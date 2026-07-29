@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>357Deals — Case Study by Aleksandar Boksan</title>
+<meta name="description" content="357Deals — a multi-category deals platform redesigned around discovery and a cross-merchant loyalty card. Case study by Aleksandar Boksan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#101113;
+--bg-alt:#17181B;
+--surface:#1B1D21;
+--text:#EDEAE3;
+--text-muted:#8B8D93;
+--accent:#4FA3A1;
+--accent-soft:rgba(79,163,161,0.14);
+--gold:#C9A227;
+--line:rgba(237,234,227,0.11);
+--radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+::selection{background:var(--accent);color:#0A0B0C;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));width:0%;z-index:300;transition:width .08s linear;}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:250;transform:translate(-50%,-50%);}
+.cursor-dot{width:6px;height:6px;background:var(--accent);}
+.cursor-ring{width:38px;height:38px;border:1px solid var(--line);transition:width .25s ease, height .25s ease, border-color .25s ease, background .25s ease;}
+.cursor-ring.hovering{width:64px;height:64px;border-color:var(--accent);background:var(--accent-soft);}
+@media (hover:none){.cursor-dot,.cursor-ring{display:none;}}
+.eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--accent);display:inline-block;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+section{position:relative;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;background:linear-gradient(to bottom, rgba(16,17,19,0.92), rgba(16,17,19,0));backdrop-filter:blur(6px);}
+header .wrap{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:600;}
+.logo span{color:var(--accent);}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav a{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);transition:color .25s ease;position:relative;padding-bottom:4px;}
+nav a:hover{color:var(--text);}
+.btn,.email-link{will-change:transform;}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.06em;color:var(--text-muted);border:1px solid var(--line);padding:7px 14px;border-radius:100px;margin-bottom:28px;width:max-content;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:60px;align-items:center;}
+.hero h1{font-size:clamp(38px,5.6vw,64px);line-height:1.05;max-width:14ch;}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400;}
+.hero p.lede{margin-top:26px;max-width:480px;color:var(--text-muted);font-size:17px;}
+.hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.04em;transition:transform .3s ease, background .3s ease, border-color .3s ease;}
+.btn-solid{background:var(--text);color:#0A0B0C;}
+.btn-solid:hover{transform:translateY(-2px);background:var(--accent);}
+.btn-ghost{border:1px solid var(--line);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px);}
+.hero-visual{position:relative;perspective:1000px;}
+.hero-visual .frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);transition:transform .15s ease-out;transform-style:preserve-3d;}
+.hero-visual .frame img{width:100%;display:block;}
+.float-card{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-family:'Space Mono',monospace;font-size:12px;display:flex;align-items:center;gap:10px;box-shadow:0 20px 40px rgba(0,0,0,0.35);transition:transform .2s ease-out;cursor:default;}
+.float-card:hover{transform:translateY(-4px) scale(1.04);border-color:var(--accent);}
+.fc-1{top:-6%;left:-12%;}
+.fc-2{bottom:14%;right:-14%;}
+.fc-3{bottom:-6%;left:6%;}
+.stats-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;}
+.stats-strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.stat{display:flex;align-items:baseline;gap:12px;transition:transform .3s ease;}
+.stat:hover{transform:translateY(-3px);}
+.stat .n{font-family:'Fraunces',serif;font-size:32px;color:var(--accent);font-variant-numeric:tabular-nums;}
+.stat .l{font-family:'Space Mono',monospace;font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;max-width:140px;}
+.section{padding:120px 0;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;flex-wrap:wrap;}
+.section-head h2{font-size:clamp(28px,3.6vw,42px);}
+.section-head p{color:var(--text-muted);max-width:360px;font-size:15px;}
+.problem-copy{max-width:720px;}
+.problem-copy p{color:var(--text-muted);font-size:17px;margin-bottom:18px;}
+.problem-copy p:last-child{margin-bottom:0;}
+.project{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 0;border-top:1px solid var(--line);}
+.project:last-child{border-bottom:1px solid var(--line);}
+.project-media{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);}
+.project-media img{width:100%;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+.project:hover .project-media img{transform:scale(1.03);}
+.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.project-tags span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--line);padding:5px 10px;border-radius:100px;}
+.project h3{font-size:clamp(22px,2.4vw,28px);margin-bottom:16px;line-height:1.15;}
+.project p{color:var(--text-muted);font-size:15px;max-width:480px;margin-bottom:18px;}
+.feature-list{list-style:none;}
+.feature-list li{color:var(--text-muted);font-size:14.5px;padding:9px 0;border-top:1px solid var(--line);padding-left:20px;position:relative;}
+.feature-list li:first-child{border-top:none;}
+.feature-list li::before{content:'—';position:absolute;left:0;color:var(--accent);}
+.gallery-strip{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);}
+.gallery-strip img{width:100%;display:block;}
+.gallery-caption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:20px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text-muted);}
+.current-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border-radius:14px;overflow:hidden;}
+.feat{background:var(--bg-alt);padding:30px 26px;transition:background .3s ease, transform .3s ease;}
+.feat:hover{background:var(--surface);transform:translateY(-4px);}
+.feat h4{font-family:'Fraunces',serif;font-size:20px;margin-bottom:10px;color:var(--accent);}
+.feat p{font-size:14px;color:var(--text-muted);}
+.next{text-align:center;padding:150px 0 100px;}
+.next h2{font-size:clamp(30px,5vw,52px);margin-bottom:20px;}
+.next p{color:var(--text-muted);max-width:460px;margin:0 auto 40px;}
+.btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+footer{border-top:1px solid var(--line);padding:32px 0;}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+footer p{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text-muted);}
+.to-top{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.to-top:hover{color:var(--accent);}
+.placeholder{border:1px dashed var(--line);border-radius:10px;padding:18px 20px;color:var(--text-muted);font-size:14.5px;font-style:italic;margin-bottom:18px;background:rgba(255,255,255,0.02);}
+.placeholder .tag{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+@media (max-width:900px){
+header{padding:16px 0;}
+nav ul{gap:16px;}
+nav a{font-size:10.5px;}
+.hero-grid{grid-template-columns:1fr;}
+.hero-visual{order:-1;max-width:340px;margin:0 auto 20px;}
+.float-card{display:none;}
+.project{grid-template-columns:1fr;gap:26px;padding:44px 0;}
+.section{padding:80px 0;}
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header>
+<div class="wrap">
+<a class="logo" href="index.html">Alex<span>.</span></a>
+<nav>
+<ul>
+<li><a href="index.html#work" class="nav-link">← Work</a></li>
+<li><a href="#approach" class="nav-link">Approach</a></li>
+<li><a href="#gallery" class="nav-link">Gallery</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="badge"><span class="dot"></span> App Redesign · E-commerce · 2025</div>
+<h1>Turning deals into a <em>reason to return.</em></h1>
+<p class="lede">357Deals spans food, beverages, clothing and services across Qatar. The redesign rebuilt discovery around the app's real strength — a loyalty card that earns points across every merchant, not just one.</p>
+<div class="hero-actions">
+<a href="https://www.figma.com/proto/c4vParVMZxy0z3srssM2gd?node-id=0:1" target="_blank" rel="noopener" class="btn btn-solid">View Prototype ↗</a>
+<a href="index.html#work" class="btn btn-ghost">Back to portfolio</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="frame"><img src="images/357deals/deals-3-home.png" alt="357Deals home screen with location, categories and special offers"></div>
+<div class="float-card fc-1">🏷️ Loyalty</div>
+<div class="float-card fc-2">📍 Qatar</div>
+<div class="float-card fc-3">🛍️ 8+ Categories</div>
+</div>
+</div>
+</section>
+
+<section class="stats-strip">
+<div class="wrap">
+<div class="stat"><span class="n">8+</span><span class="l">Categories, pubs to travel</span></div>
+<div class="stat"><span class="n">1</span><span class="l">Loyalty card across every merchant</span></div>
+<div class="stat"><span class="n">In-app</span><span class="l">Redemption via merchant code</span></div>
+<div class="stat"><span class="n">iOS</span><span class="l">&amp; Android</span></div>
+</div>
+</section>
+
+<section class="section" id="problem">
+<div class="wrap">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">The problem</div>
+<h2>A directory people opened once, then forgot.</h2>
+</div>
+</div>
+<div class="problem-copy reveal">
+<p>One of the key challenges faced during the app redesign was addressing the poor, user-unfriendly UX of the previous version. The original interface had issues like cluttered sorting and ineffective screen displays, making navigation difficult for users.</p>
+<p>The goal was to create a more intuitive and accessible experience by restructuring these components into a cleaner, more efficient layout.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="approach">
+<div class="wrap">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">The approach</div>
+<h2>Discovery that invites browsing.</h2>
+</div>
+<p>The home screen rebuilt around the way people actually explore Qatar's dining and retail scene.</p>
+</div>
+
+<div class="project reveal">
+<div class="project-media"><img src="images/357deals/deals-3-home.png" alt="357Deals home screen with categories, stories and offers"></div>
+<div>
+<div class="project-tags"><span>01 — Discovery</span></div>
+<h3>Categories and stories, not just a search bar.</h3>
+<p>What sets the app apart is its comprehensive functionality, with everything well-organized and conveniently displayed in one place. Loyalty card tags were added directly onto products that offer bonus points, making it easy to spot rewarding purchases — alongside a feature that displays the total number of available stores at any given moment.</p>
+<ul class="feature-list">
+<li>Location-aware home feed with rotating offers</li>
+<li>Story-style highlights for time-sensitive deals</li>
+<li>Curated collections group merchants by occasion, not just category</li>
+</ul>
+</div>
+</div>
+
+<div class="project reveal">
+<div class="project-media"><img src="images/357deals/deals-2-loyalty.png" alt="Digital loyalty card, stamp grid and merchant code redemption screens"></div>
+<div>
+<div class="project-tags"><span>02 — Loyalty</span></div>
+<h3>A digital stamp card that works everywhere.</h3>
+<p>A dedicated screen showcases the loyalty card, illustrating how customers earn points through the app. Every time a customer purchases a product included in the loyalty program, they get the opportunity to earn valuable rewards.</p>
+<ul class="feature-list">
+<li>Branded loyalty card per merchant, one shared wallet</li>
+<li>Stamp grid makes progress toward a reward visible at a glance</li>
+<li>Redeem in-store with a merchant code — no extra hardware</li>
+</ul>
+</div>
+</div>
+
+<div class="project reveal">
+<div class="project-media"><img src="images/357deals/deals-1-profile.png" alt="Profile, purchase history, merchants and collections screens"></div>
+<div>
+<div class="project-tags"><span>03 — Account</span></div>
+<h3>Profile and history that stay out of the way.</h3>
+<p>One of the new screens introduced in the redesign is OTP Verification, prompting users to enter a code during registration. A feature was also added to the user profile enabling people to view the history of their past purchases.</p>
+<ul class="feature-list">
+<li>Purchase history linked directly to loyalty progress</li>
+<li>Short, single-purpose sign-up and account screens</li>
+<li>Merchant directory and language settings tucked into a side menu</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="gallery">
+<div class="wrap">
+<div class="section-head reveal">
+<div>
+<div class="eyebrow">In detail</div>
+<h2>The loyalty flow, end to end.</h2>
+</div>
+</div>
+<div class="gallery-strip reveal">
+<img src="images/357deals/deals-2-loyalty.png" alt="357Deals loyalty card and account flow across multiple screens">
+</div>
+<div class="gallery-caption">
+<span>Loyalty card → redeem code → account settings → sign-up confirmation</span>
+<span>iOS, Figma prototype</span>
+</div>
+</div>
+</section>
+
+<section class="next">
+<div class="wrap">
+<div class="eyebrow reveal" style="justify-content:center;">Next up</div>
+<h2 class="reveal">See how Eat Sohhi unified a whole daily habit.</h2>
+<p class="reveal">A personalized health app that turns meal planning, food delivery and workouts into a single daily loop.</p>
+<div class="btn-row reveal">
+<a class="btn btn-solid" href="case-study-eat-sohhi.html">View Eat Sohhi →</a>
+<a class="btn btn-ghost" href="index.html#work">Back to all work</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<p>© 2025 Aleksandar Boksan — Designed &amp; built with ♥ in Istanbul</p>
+<a class="to-top" href="#">↑ Back to top</a>
+</div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+const progressBar = document.getElementById('progressBar');
+function updateProgress(){
+const h = document.documentElement;
+const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+progressBar.style.width = scrolled + '%';
+}
+window.addEventListener('scroll', updateProgress);
+updateProgress();
+
+const isFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+if(isFinePointer){
+let dotX=0,dotY=0,ringX=0,ringY=0;
+window.addEventListener('mousemove',(e)=>{
+dotX=e.clientX; dotY=e.clientY;
+cursorDot.style.left=dotX+'px'; cursorDot.style.top=dotY+'px';
+});
+function ringLoop(){
+ringX += (dotX-ringX)*0.18;
+ringY += (dotY-ringY)*0.18;
+cursorRing.style.left=ringX+'px'; cursorRing.style.top=ringY+'px';
+requestAnimationFrame(ringLoop);
+}
+ringLoop();
+const hoverables = document.querySelectorAll('a, button, .feat, .float-card');
+hoverables.forEach(el=>{
+el.addEventListener('mouseenter',()=>cursorRing.classList.add('hovering'));
+el.addEventListener('mouseleave',()=>cursorRing.classList.remove('hovering'));
+});
+} else {
+cursorDot.style.display='none';
+cursorRing.style.display='none';
+}
+
+if(isFinePointer){
+const magnets = document.querySelectorAll('.btn');
+magnets.forEach(el=>{
+el.addEventListener('mousemove',(e)=>{
+const r = el.getBoundingClientRect();
+const x = e.clientX - r.left - r.width/2;
+const y = e.clientY - r.top - r.height/2;
+el.style.transform = `translate(${x*0.25}px, ${y*0.35}px)`;
+});
+el.addEventListener('mouseleave',()=>{ el.style.transform='translate(0,0)'; });
+});
+const heroVisual = document.querySelector('.hero-visual');
+const heroFrame = document.querySelector('.hero-visual .frame');
+if(heroVisual && heroFrame){
+heroVisual.addEventListener('mousemove',(e)=>{
+const r = heroVisual.getBoundingClientRect();
+const x = (e.clientX - r.left)/r.width - 0.5;
+const y = (e.clientY - r.top)/r.height - 0.5;
+heroFrame.style.transform = `rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`;
+});
+heroVisual.addEventListener('mouseleave',()=>{
+heroFrame.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+});
+}
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click', function(e){
+const targetId = this.getAttribute('href');
+if(targetId.length>1){
+const target = document.querySelector(targetId);
+if(target){
+e.preventDefault();
+const top = target.getBoundingClientRect().top + window.pageYOffset - 90;
+window.scrollTo({top, behavior:'smooth'});
+}
+}
+});
+});
+</script>
+</body>
+</html>
