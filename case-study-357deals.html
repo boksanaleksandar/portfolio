@@ -55,6 +55,9 @@ nav a:hover{color:var(--text);}
 .hero h1{font-size:clamp(38px,5.6vw,64px);line-height:1.05;max-width:14ch;}
 .hero h1 em{font-style:italic;color:var(--accent);font-weight:400;}
 .hero p.lede{margin-top:26px;max-width:480px;color:var(--text-muted);font-size:17px;}
+.hero p.lede strong{color:var(--text);font-weight:600;}
+.hero p.role{margin-top:16px;max-width:480px;color:var(--text-muted);font-size:14.5px;font-family:'Space Mono',monospace;line-height:1.65;}
+.hero p.role strong{color:var(--accent);font-weight:700;}
 .hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.04em;transition:transform .3s ease, background .3s ease, border-color .3s ease;}
 .btn-solid{background:var(--text);color:#0A0B0C;}
@@ -82,6 +85,7 @@ nav a:hover{color:var(--text);}
 .problem-copy{max-width:720px;}
 .problem-copy p{color:var(--text-muted);font-size:17px;margin-bottom:18px;}
 .problem-copy p:last-child{margin-bottom:0;}
+.problem-copy strong{color:var(--text);font-weight:600;}
 .project{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 0;border-top:1px solid var(--line);}
 .project:last-child{border-bottom:1px solid var(--line);}
 .project-media{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);}
@@ -91,6 +95,8 @@ nav a:hover{color:var(--text);}
 .project-tags span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--line);padding:5px 10px;border-radius:100px;}
 .project h3{font-size:clamp(22px,2.4vw,28px);margin-bottom:16px;line-height:1.15;}
 .project p{color:var(--text-muted);font-size:15px;max-width:480px;margin-bottom:18px;}
+.project p strong{color:var(--text);font-weight:600;}
+.project p strong.hl{color:var(--accent);}
 .feature-list{list-style:none;}
 .feature-list li{color:var(--text-muted);font-size:14.5px;padding:9px 0;border-top:1px solid var(--line);padding-left:20px;position:relative;}
 .feature-list li:first-child{border-top:none;}
@@ -114,6 +120,12 @@ footer p{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text-mu
 .to-top:hover{color:var(--accent);}
 .placeholder{border:1px dashed var(--line);border-radius:10px;padding:18px 20px;color:var(--text-muted);font-size:14.5px;font-style:italic;margin-bottom:18px;background:rgba(255,255,255,0.02);}
 .placeholder .tag{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.placeholder strong{font-style:normal;font-weight:700;}
+.callout{border:1px dashed var(--accent);border-radius:10px;padding:22px 26px;color:var(--text-muted);font-size:15.5px;font-style:italic;margin-bottom:44px;background:var(--accent-soft);max-width:760px;}
+.callout .tag{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+.callout strong{font-style:normal;font-weight:700;}
+.callout strong.hl{color:var(--accent);}
+.callout strong.tx{color:var(--text);}
 @media (max-width:900px){
 header{padding:16px 0;}
 nav ul{gap:16px;}
@@ -150,7 +162,8 @@ nav a{font-size:10.5px;}
 <div>
 <div class="badge"><span class="dot"></span> App Redesign · E-commerce · 2025</div>
 <h1>Turning deals into a <em>reason to return.</em></h1>
-<p class="lede">357Deals spans food, beverages, clothing and services across Qatar. The redesign rebuilt discovery around the app's real strength — a loyalty card that earns points across every merchant, not just one.</p>
+<p class="lede">Nobody opens a deals app twice if the deals aren't the reason to open it. I moved the <strong>loyalty card</strong> from a hidden tab to the center of the home screen — it's the <strong>first thing you see now</strong>, not the third.</p>
+<p class="role"><strong>Solo designer</strong> on this project — I led discovery, the loyalty system and account flows, from wireframes to final UI.</p>
 <div class="hero-actions">
 <a href="https://www.figma.com/proto/c4vParVMZxy0z3srssM2gd?node-id=0:1" target="_blank" rel="noopener" class="btn btn-solid">View Prototype ↗</a>
 <a href="index.html#work" class="btn btn-ghost">Back to portfolio</a>
@@ -183,8 +196,8 @@ nav a{font-size:10.5px;}
 </div>
 </div>
 <div class="problem-copy reveal">
-<p>One of the key challenges faced during the app redesign was addressing the poor, user-unfriendly UX of the previous version. The original interface had issues like cluttered sorting and ineffective screen displays, making navigation difficult for users.</p>
-<p>The goal was to create a more intuitive and accessible experience by restructuring these components into a cleaner, more efficient layout.</p>
+<p>The old app had <strong>cluttered sorting</strong> and screens people couldn't make sense of — most people opened it once and never came back.</p>
+<p>I restructured discovery and account screens into a <strong>cleaner, more efficient layout</strong>, built around how people actually browse deals.</p>
 </div>
 </div>
 </section>
@@ -199,12 +212,17 @@ nav a{font-size:10.5px;}
 <p>The home screen rebuilt around the way people actually explore Qatar's dining and retail scene.</p>
 </div>
 
+<div class="callout reveal">
+<span class="tag">Key decision — Discovery</span>
+Search bars don't work well for browsing deals — nobody knows what to search for. I switched the home screen to <strong class="tx">categories and story-style highlights</strong> instead, closer to how people already scroll through Instagram than how they'd use a search engine.
+</div>
+
 <div class="project reveal">
 <div class="project-media"><img src="357deals/deals-3-home.png" alt="357Deals home screen with categories, stories and offers"></div>
 <div>
 <div class="project-tags"><span>01 — Discovery</span></div>
 <h3>Categories and stories, not just a search bar.</h3>
-<p>What sets the app apart is its comprehensive functionality, with everything well-organized and conveniently displayed in one place. Loyalty card tags were added directly onto products that offer bonus points, making it easy to spot rewarding purchases — alongside a feature that displays the total number of available stores at any given moment.</p>
+<p>I added <strong class="hl">loyalty tags directly onto products</strong> that earn bonus points, so rewards are visible while browsing — not buried in a separate tab. A live counter shows how many stores are active right now.</p>
 <ul class="feature-list">
 <li>Location-aware home feed with rotating offers</li>
 <li>Story-style highlights for time-sensitive deals</li>
@@ -218,7 +236,7 @@ nav a{font-size:10.5px;}
 <div>
 <div class="project-tags"><span>02 — Loyalty</span></div>
 <h3>A digital stamp card that works everywhere.</h3>
-<p>A dedicated screen showcases the loyalty card, illustrating how customers earn points through the app. Every time a customer purchases a product included in the loyalty program, they get the opportunity to earn valuable rewards.</p>
+<p>A dedicated screen shows the <strong class="hl">loyalty card</strong>, with every qualifying purchase adding a stamp automatically. Progress toward the next reward is visible at a glance, not buried in a menu.</p>
 <ul class="feature-list">
 <li>Branded loyalty card per merchant, one shared wallet</li>
 <li>Stamp grid makes progress toward a reward visible at a glance</li>
@@ -232,7 +250,7 @@ nav a{font-size:10.5px;}
 <div>
 <div class="project-tags"><span>03 — Account</span></div>
 <h3>Profile and history that stay out of the way.</h3>
-<p>One of the new screens introduced in the redesign is OTP Verification, prompting users to enter a code during registration. A feature was also added to the user profile enabling people to view the history of their past purchases.</p>
+<p>Registration now includes <strong class="hl">OTP verification</strong>, and the profile screen surfaces purchase history right next to loyalty progress — so people can check rewards without digging through menus.</p>
 <ul class="feature-list">
 <li>Purchase history linked directly to loyalty progress</li>
 <li>Short, single-purpose sign-up and account screens</li>
