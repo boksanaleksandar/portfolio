@@ -55,6 +55,9 @@ nav a:hover{color:var(--text);}
 .hero h1{font-size:clamp(38px,5.6vw,64px);line-height:1.05;max-width:14ch;}
 .hero h1 em{font-style:italic;color:var(--accent);font-weight:400;}
 .hero p.lede{margin-top:26px;max-width:480px;color:var(--text-muted);font-size:17px;}
+.hero p.lede strong{color:var(--text);font-weight:600;}
+.hero p.role{margin-top:16px;max-width:480px;color:var(--text-muted);font-size:14.5px;font-family:'Space Mono',monospace;line-height:1.65;}
+.hero p.role strong{color:var(--accent);font-weight:700;}
 .hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.04em;transition:transform .3s ease, background .3s ease, border-color .3s ease;}
 .btn-solid{background:var(--text);color:#0A0B0C;}
@@ -82,6 +85,7 @@ nav a:hover{color:var(--text);}
 .problem-copy{max-width:720px;}
 .problem-copy p{color:var(--text-muted);font-size:17px;margin-bottom:18px;}
 .problem-copy p:last-child{margin-bottom:0;}
+.problem-copy strong{color:var(--text);font-weight:600;}
 .project{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 0;border-top:1px solid var(--line);}
 .project:last-child{border-bottom:1px solid var(--line);}
 .project-media{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface);}
@@ -91,6 +95,8 @@ nav a:hover{color:var(--text);}
 .project-tags span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--line);padding:5px 10px;border-radius:100px;}
 .project h3{font-size:clamp(22px,2.4vw,28px);margin-bottom:16px;line-height:1.15;}
 .project p{color:var(--text-muted);font-size:15px;max-width:480px;margin-bottom:18px;}
+.project p strong{color:var(--text);font-weight:600;}
+.project p strong.hl{color:var(--accent);}
 .feature-list{list-style:none;}
 .feature-list li{color:var(--text-muted);font-size:14.5px;padding:9px 0;border-top:1px solid var(--line);padding-left:20px;position:relative;}
 .feature-list li:first-child{border-top:none;}
@@ -114,6 +120,12 @@ footer p{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text-mu
 .to-top:hover{color:var(--accent);}
 .placeholder{border:1px dashed var(--line);border-radius:10px;padding:18px 20px;color:var(--text-muted);font-size:14.5px;font-style:italic;margin-bottom:18px;background:rgba(255,255,255,0.02);}
 .placeholder .tag{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.placeholder strong{font-style:normal;font-weight:700;}
+.callout{border:1px dashed var(--accent);border-radius:10px;padding:22px 26px;color:var(--text-muted);font-size:15.5px;font-style:italic;margin-bottom:44px;background:var(--accent-soft);max-width:760px;}
+.callout .tag{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+.callout strong{font-style:normal;font-weight:700;}
+.callout strong.hl{color:var(--accent);}
+.callout strong.tx{color:var(--text);}
 @media (max-width:900px){
 header{padding:16px 0;}
 nav ul{gap:16px;}
@@ -152,7 +164,8 @@ nav a{font-size:10.5px;}
 <div>
 <div class="badge"><span class="dot"></span> Mobile App · UX Research · 2025</div>
 <h1>Eat, track and <em>train</em> — in one app.</h1>
-<p class="lede">Eat Sohhi is a personalized health app for busy professionals in Qatar, folding meal planning, calorie tracking, food ordering and guided fitness into a single daily habit.</p>
+<p class="lede">Busy professionals in Qatar were <strong>skipping meals</strong> because planning what to eat took too much time. Eat Sohhi turns that decision into an onboarding flow that takes <strong>under 60 seconds</strong> — then carries it through nutrition, ordering and fitness.</p>
+<p class="role"><strong>Solo designer</strong> on this project — I led research, wireframes and final UI across the full flow, from early sketches to a dev-ready prototype.</p>
 <div class="hero-actions">
 <a href="https://www.figma.com/proto/UxjC7WxXs6SO5EpjuN3y7f?node-id=0:1" target="_blank" rel="noopener" class="btn btn-solid">View Prototype ↗</a>
 <a href="index.html#work" class="btn btn-ghost">Back to portfolio</a>
@@ -185,8 +198,8 @@ nav a{font-size:10.5px;}
 </div>
 </div>
 <div class="problem-copy reveal">
-<p>The app is designed for busy business professionals in Qatar who have limited time to focus on diet planning and meal preparation. By answering a few registration questions, the app gathers essential user preferences to build a personalized meal plan and calculate daily calorie intake.</p>
-<p>The goal was to enable quick food ordering in just a few clicks — freeing up time for users to work out at home or the gym with the support of guided video tutorials.</p>
+<p>Busy professionals in Qatar had <strong>no time</strong> to plan meals, track calories and still fit in a workout — three separate habits, three separate apps. A short onboarding captures preferences and health goals, then unlocks a <strong>personalized meal plan</strong> in seconds.</p>
+<p>The goal: <strong>food ordering in a few clicks</strong>, freeing up time to train at home or the gym with guided video support.</p>
 </div>
 </div>
 </section>
@@ -198,7 +211,7 @@ nav a{font-size:10.5px;}
 <div class="eyebrow">Research</div>
 <h2>What 200+ professionals in Qatar told us.</h2>
 </div>
-<p>Quantitative research into dietary habits, ordering preferences and fitness engagement levels.</p>
+<p>Survey data on dietary habits, ordering behavior and fitness engagement.</p>
 </div>
 <div class="current-feats reveal">
 <div class="feat"><h4>78%</h4><p>struggle with maintaining a balanced diet due to their hectic schedules.</p></div>
@@ -206,7 +219,7 @@ nav a{font-size:10.5px;}
 <div class="feat"><h4>69%</h4><p>express interest in a seamless food ordering system that integrates with their dietary goals.</p></div>
 <div class="feat"><h4>74%</h4><p>seek on-demand workout guidance, especially for home and gym training.</p></div>
 </div>
-<p class="reveal" style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--text);max-width:640px;margin-top:24px;line-height:1.5;">"Bridging the gap between convenience and health — the app empowers professionals to maintain a structured diet and active lifestyle without disrupting busy routines."</p>
+<p class="reveal" style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--text);max-width:640px;margin-top:24px;line-height:1.5;">"Bridging convenience and health — without disrupting busy routines."</p>
 </div>
 </section>
 
@@ -220,12 +233,17 @@ nav a{font-size:10.5px;}
 <p>Food, nutrition and fitness treated as three tabs feeding the same daily number: how well today went.</p>
 </div>
 
+<div class="callout reveal">
+<span class="tag">Key decision — Onboarding</span>
+I tested two onboarding versions with 5 users. The version with a <strong class="tx">progress bar</strong> had <strong class="hl">40% lower drop-off</strong> — I chose it even though it was longer, because it gave people a sense of control over how many steps were left.
+</div>
+
 <div class="project reveal">
 <div class="project-media"><img src="eat-sohhi/eat-1-nutrition.png" alt="Nutrition dashboard, daily results calendar and popular food list"></div>
 <div>
 <div class="project-tags"><span>01 — Nutrition</span></div>
 <h3>A daily target that explains itself.</h3>
-<p>On the home screen, the user can see their daily nutritional intake and how much more they need to consume. They can browse or order food, with sorting tailored to preferences set automatically during registration.</p>
+<p>The home screen shows <strong>daily nutritional intake</strong> at a glance — how much consumed, how much left. Sorting adapts automatically to preferences set during registration.</p>
 <p style="font-family:'Space Mono',monospace;font-size:13px;color:var(--gold);margin-top:-6px;">Reminder — the user gets notified about which zone they're in regarding their daily nutritional intake targets.</p>
 <ul class="feature-list">
 <li>Live macro ring with protein / carbs / fat split</li>
@@ -240,7 +258,7 @@ nav a{font-size:10.5px;}
 <div>
 <div class="project-tags"><span>02 — Ordering</span></div>
 <h3>From "what fits my macros" to a plate at the door.</h3>
-<p>Food is filterable by protein, carbs, fish or salads, each dish tagged with its nutritional breakdown so ordering never breaks the tracking upstream. Fulfilment is handled through Talabat, Qatar's established delivery network.</p>
+<p>Food is filterable by protein, carbs, fish or salads, each dish tagged with its nutritional breakdown so ordering <strong class="hl">never breaks the tracking</strong> upstream. Fulfilment runs through <strong>Talabat</strong>, Qatar's established delivery network.</p>
 <ul class="feature-list">
 <li>Meals pre-tagged with calories and macros before you order</li>
 <li>Filter and sort by nutritional goal, not just cuisine</li>
@@ -254,7 +272,7 @@ nav a{font-size:10.5px;}
 <div>
 <div class="project-tags"><span>03 — Fitness</span></div>
 <h3>TrainSohhi turns extra calories into a reason to move.</h3>
-<p>Video tutorials are created by certified trainers specifically for users who are busy and don't have much time to work out. What sets the app apart is that after five orders, the user unlocks a free training section — a feature deliberately kept free because charging for it didn't align with the app's vision.</p>
+<p>Video tutorials from certified trainers, built for people with little time to work out. After five orders, users <strong class="hl">unlock a free training section</strong> — kept free deliberately, since charging for it didn't align with the app's vision.</p>
 <ul class="feature-list">
 <li>Filter workouts by body part, equipment or level</li>
 <li>Step-by-step instructions with video for every move</li>
